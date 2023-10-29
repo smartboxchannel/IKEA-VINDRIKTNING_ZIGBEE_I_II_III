@@ -39,10 +39,10 @@ const tzLocal = {
             const lookup = {'OFF': 0x00, 'ON': 0x01};
             const value = lookup.hasOwnProperty(rawValue) ? lookup[rawValue] : parseInt(rawValue, 10);
             const payloads = {
-                high_gas: ['pm25Measurement', {0x0221: {value, type: 0x21}}],
-                low_gas: ['pm25Measurement', {0x0222: {value, type: 0x21}}],
-				enable_gas: ['pm25Measurement', {0x0220: {value, type: 0x10}}],
-				invert_logic_gas: ['pm25Measurement', {0x0225: {value, type: 0x10}}],
+                high_pm25: ['pm25Measurement', {0x0221: {value, type: 0x21}}],
+                low_pm25: ['pm25Measurement', {0x0222: {value, type: 0x21}}],
+				enable_pm25: ['pm25Measurement', {0x0220: {value, type: 0x10}}],
+				invert_logic_pm25: ['pm25Measurement', {0x0225: {value, type: 0x10}}],
             };
             await endpoint.write(payloads[key][0], payloads[key][1]);
             return {
@@ -70,7 +70,7 @@ const fzLocal = {
         type: ['attributeReport', 'readResponse'],
         convert: (model, msg, publish, options, meta) => {
 			if (msg.data.hasOwnProperty('measuredValue')) {
-				return {pm25: Math.round(msg.data.measuredValue * 1000000)};
+				return {pm25: parseFloat(msg.data.measuredValue)};
 			}
         },
     },
@@ -79,7 +79,7 @@ const fzLocal = {
         type: ['attributeReport', 'readResponse'],
         convert: (model, msg, publish, options, meta) => {
 			if (msg.data.hasOwnProperty(0x00C8)) {
-				return {pm1: Math.round(msg.data[0x00C8] * 1000000)};
+				return {pm1: parseFloat(msg.data[0x00C8])};
 			}
         },
     },
@@ -88,7 +88,7 @@ const fzLocal = {
         type: ['attributeReport', 'readResponse'],
         convert: (model, msg, publish, options, meta) => {
 			if (msg.data.hasOwnProperty(0x00C9)) {
-				return {pm10: Math.round(msg.data[0x00C9] * 1000000)};
+				return {pm10: parseFloat(msg.data[0x00C9])};
 			}
         },
     },
@@ -98,16 +98,16 @@ const fzLocal = {
         convert: (model, msg, publish, options, meta) => {
             const result = {};
             if (msg.data.hasOwnProperty(0x0221)) {
-                result.high_gas = msg.data[0x0221];
+                result.high_pm25 = msg.data[0x0221];
             }
 			if (msg.data.hasOwnProperty(0x0222)) {
-                result.low_gas = msg.data[0x0222];
+                result.low_pm25 = msg.data[0x0222];
             }
             if (msg.data.hasOwnProperty(0x0220)) {
-                result.enable_gas = ['OFF', 'ON'][msg.data[0x0220]];
+                result.enable_pm25 = ['OFF', 'ON'][msg.data[0x0220]];
             }
 			if (msg.data.hasOwnProperty(0x0225)) {
-                result.invert_logic_gas = ['OFF', 'ON'][msg.data[0x0225]];
+                result.invert_logic_pm25 = ['OFF', 'ON'][msg.data[0x0225]];
             }
             return result;
         },
@@ -140,11 +140,11 @@ const definition = {
 			exposes.numeric('pm10', ea.STATE).withUnit('μg/m³').withDescription('PM10'),
 		    exposes.numeric('reading_interval', ea.STATE_SET).withUnit('Seconds').withDescription('Setting the sensor reading interval Setting the time in seconnds, by default 30 seconds')
                 .withValueMin(15).withValueMax(300),
-			exposes.binary('enable_gas', ea.STATE_SET, 'ON', 'OFF').withDescription('Enable CO2 Gas Control'),
-			exposes.binary('invert_logic_gas', ea.STATE_SET, 'ON', 'OFF').withDescription('Enable invert logic CO2 Gas Control'),
-            exposes.numeric('high_gas', ea.STATE_SET).withUnit('ppm').withDescription('Setting High CO2 Gas Border')
+			exposes.binary('enable_pm25', ea.STATE_SET, 'ON', 'OFF').withDescription('Enable PM2.5 Control'),
+			exposes.binary('invert_logic_pm25', ea.STATE_SET, 'ON', 'OFF').withDescription('Enable invert logic PM2.5 Control'),
+            exposes.numeric('high_pm25', ea.STATE_SET).withUnit('ppm').withDescription('Setting High PM2.5 Border')
                 .withValueMin(0).withValueMax(1000),
-            exposes.numeric('low_gas', ea.STATE_SET).withUnit('ppm').withDescription('Setting Low CO2 Gas Border')
+            exposes.numeric('low_pm25', ea.STATE_SET).withUnit('ppm').withDescription('Setting Low PM2.5 Border')
                 .withValueMin(0).withValueMax(1000)],
 };
 
