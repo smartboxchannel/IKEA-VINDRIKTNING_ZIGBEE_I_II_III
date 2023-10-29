@@ -54,6 +54,14 @@ It is possible to configure the interval reading of the PM1006 sensor via a Wi-F
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/012.png) 
 
 
+Для настройки отчетов по вашим предпочтениям необходимо перенастроить свойства «Мин. интервал отчета», «Макс. интервал отчета», «Мин. интервал отчета при изменении». По умолчанию отчеты настроены как 0, 600, 0.
+
+To configure reports based on your preferences, it is necessary to reconfigure the properties "Min. report interval", "Max. report interval", "Min. report interval when changing". By default, reports are configured as 0, 600, 0.
+
+![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/013.png) 
+
+
+
 
 
 
