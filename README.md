@@ -1,6 +1,6 @@
 # IKEA-VINDRIKTNING_ZIGBEE
 
-![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/IKEA-VINDRIKTNING.png) 
+![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/IKEA-VINDRIKTNING_01.png) 
 
 Проект усовершенствования сенсора IKEA VINDRIKTNING. С помощью дополнительной платы с радиомодулем на чипе cc2530 мы получаем возможность отправлять данные с датчика PM1006 в сеть zigbee.
 
