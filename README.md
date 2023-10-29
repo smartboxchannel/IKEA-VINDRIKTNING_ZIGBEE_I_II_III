@@ -12,7 +12,7 @@ IKEA VINDRIKTNING sensor refinement project. With the help of an additional boar
 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/001.png) 
 
-![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/IKEA-VINDRIKTNING.png) 
+![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/SCHEMATIC/IKEA-VINDRIKTNING_ZIGBEE.png) 
 
 
 Для прошивки платы необходимо подключить ее к SmartRF04EB и прошить через программу SmartRF Flash Programmer
