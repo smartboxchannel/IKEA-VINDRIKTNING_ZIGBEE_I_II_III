@@ -23,9 +23,16 @@ To connect the zigbee adapter board to the main board, use the following connect
 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/005.png) 
 
+### JOIN
 Для подключения датчика к сети необходимо включить координатор в режим приема новых устройств. После этого необходимо подать питание на датчик VINDRIKTNING.
 
 To join the sensor to the network, it is necessary to turn on the coordinator in the mode of reception of new devices. After this, it is necessary to supply power to the sensor VINDRIKTNING.
+
+
+### LEAVE
+Для отключения датчика от сети zigbee необходимо 4 раза отключить датчик от питания, с интервалом между отключениями не более 8 секунд.
+
+To remove the sensor from the zigbee network, it is necessary to disconnect the sensor from the power supply 4 times, with an interval between disconnections of no more than 8 seconds.
 
 
 
