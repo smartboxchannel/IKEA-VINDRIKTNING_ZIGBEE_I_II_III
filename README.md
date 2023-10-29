@@ -61,6 +61,11 @@ To configure reports based on your preferences, it is necessary to reconfigure t
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/013.png) 
 
 
+В ZHA датчик работает как простое устройство, без дополнительных функций. Надеюсь, кто-нибудь сможет мне с этим помочь (ZHA quirks)
+
+In ZHA, the sensor works as a simple device, without additional features. I hope someone can help me with this (ZHA quirks)
+
+
 ### Clusters
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/014.png) 
 
