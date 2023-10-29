@@ -17,4 +17,10 @@ To flash the board, you need to connect it to the SmartRF04EB and flash it throu
 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/007.png) 
 
+Для прошивки платы необходимо подключить ее к SmartRF04EB и прошить через программу SmartRF Flash Programmer
+
+To connect the zigbee adapter board to the main board, use the following connection diagram.
+
+
+
 
