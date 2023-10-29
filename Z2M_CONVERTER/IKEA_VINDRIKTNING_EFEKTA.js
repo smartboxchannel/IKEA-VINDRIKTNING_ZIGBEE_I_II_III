@@ -1,0 +1,151 @@
+// ############################################################################//
+//                                                                             //
+//    Файл с описанием  устройства IKEA_VINDRIKTNING_EFEKTA                    // 
+//    для zigbee2mqtt брокера                                                  //
+//                                                                             //
+//    Необходимо перезагрузить z2m, что бы конвертер применился                //
+//                                                                             //
+//#############################################################################//
+
+const fz = require('zigbee-herdsman-converters/converters/fromZigbee');
+const tz = require('zigbee-herdsman-converters/converters/toZigbee');
+const exposes = require('zigbee-herdsman-converters/lib/exposes');
+const reporting = require('zigbee-herdsman-converters/lib/reporting');
+const extend = require('zigbee-herdsman-converters/lib/extend');
+const constants = require('zigbee-herdsman-converters/lib/constants');
+const e = exposes.presets;
+const ea = exposes.access;
+
+const tzLocal = {
+	node_config: {
+        key: ['reading_interval'],
+        convertSet: async (entity, key, rawValue, meta) => {
+			const endpoint = meta.device.getEndpoint(1);
+            const lookup = {'OFF': 0x00, 'ON': 0x01};
+            const value = lookup.hasOwnProperty(rawValue) ? lookup[rawValue] : parseInt(rawValue, 10);
+            const payloads = {
+                reading_interval: ['pm25Measurement', {0x0201: {value, type: 0x21}}],
+            };
+            await endpoint.write(payloads[key][0], payloads[key][1]);
+            return {
+                state: {[key]: rawValue},
+            };
+        },
+    },
+	pm_gasstat_config: {
+        key: ['high_gas', 'low_gas', 'enable_gas', 'invert_logic_gas'],
+        convertSet: async (entity, key, rawValue, meta) => {
+			const endpoint = meta.device.getEndpoint(1);
+            const lookup = {'OFF': 0x00, 'ON': 0x01};
+            const value = lookup.hasOwnProperty(rawValue) ? lookup[rawValue] : parseInt(rawValue, 10);
+            const payloads = {
+                high_gas: ['pm25Measurement', {0x0221: {value, type: 0x21}}],
+                low_gas: ['pm25Measurement', {0x0222: {value, type: 0x21}}],
+				enable_gas: ['pm25Measurement', {0x0220: {value, type: 0x10}}],
+				invert_logic_gas: ['pm25Measurement', {0x0225: {value, type: 0x10}}],
+            };
+            await endpoint.write(payloads[key][0], payloads[key][1]);
+            return {
+                state: {[key]: rawValue},
+            };
+        },
+    },
+	
+};
+
+const fzLocal = {
+	node_config: {
+        cluster: 'pm25Measurement',
+        type: ['attributeReport', 'readResponse'],
+        convert: (model, msg, publish, options, meta) => {
+            const result = {};
+            if (msg.data.hasOwnProperty(0x0201)) {
+                result.reading_interval = msg.data[0x0201];
+            }
+            return result;
+        },
+    },
+	pm25: {
+        cluster: 'pm25Measurement',
+        type: ['attributeReport', 'readResponse'],
+        convert: (model, msg, publish, options, meta) => {
+			if (msg.data.hasOwnProperty('measuredValue')) {
+				return {pm25: Math.round(msg.data.measuredValue * 1000000)};
+			}
+        },
+    },
+	pm1: {
+        cluster: 'pm25Measurement',
+        type: ['attributeReport', 'readResponse'],
+        convert: (model, msg, publish, options, meta) => {
+			if (msg.data.hasOwnProperty(0x00C8)) {
+				return {pm1: Math.round(msg.data[0x00C8] * 1000000)};
+			}
+        },
+    },
+    pm10: {
+        cluster: 'pm25Measurement',
+        type: ['attributeReport', 'readResponse'],
+        convert: (model, msg, publish, options, meta) => {
+			if (msg.data.hasOwnProperty(0x00C9)) {
+				return {pm10: Math.round(msg.data[0x00C9] * 1000000)};
+			}
+        },
+    },
+    pm_gasstat_config: {
+        cluster: 'pm25Measurement',
+        type: ['attributeReport', 'readResponse'],
+        convert: (model, msg, publish, options, meta) => {
+            const result = {};
+            if (msg.data.hasOwnProperty(0x0221)) {
+                result.high_gas = msg.data[0x0221];
+            }
+			if (msg.data.hasOwnProperty(0x0222)) {
+                result.low_gas = msg.data[0x0222];
+            }
+            if (msg.data.hasOwnProperty(0x0220)) {
+                result.enable_gas = ['OFF', 'ON'][msg.data[0x0220]];
+            }
+			if (msg.data.hasOwnProperty(0x0225)) {
+                result.invert_logic_gas = ['OFF', 'ON'][msg.data[0x0225]];
+            }
+            return result;
+        },
+    },	
+};
+
+const definition = {
+        zigbeeModel: ['IKEA_VINDRIKTNING_EFEKTA'],
+        model: 'IKEA_VINDRIKTNING_EFEKTA',
+        vendor: 'IKEA',
+        description: '[IKEA_VINDRIKTNING - Solid particle sensor with extended functionality (control of air cleaning)](http://efektalab.com/IKEA_VINDRIKTNING )',
+        fromZigbee: [fzLocal.pm25, fzLocal.pm1, fzLocal.pm10, fzLocal.pm_gasstat_config, fzLocal.node_config],
+        toZigbee: [tz.factory_reset,  tzLocal.pm_gasstat_config, tzLocal.node_config],
+        configure: async (device, coordinatorEndpoint, logger) => {
+            const endpoint = device.getEndpoint(1);
+            const clusters = ['pm25Measurement'];
+			await reporting.bind(endpoint, coordinatorEndpoint, clusters);
+			const payload1 = [{attribute: {ID: 0x0000, type: 0x39},
+            minimumReportInterval: 0, maximumReportInterval: 600, reportableChange: 0}];
+            await endpoint.configureReporting('pm25Measurement', payload1);
+			const payload2 = [{attribute: {ID: 0x00C8, type: 0x39},
+            minimumReportInterval: 0, maximumReportInterval: 600, reportableChange: 0}];
+            await endpoint.configureReporting('pm25Measurement', payload2);
+			const payload3 = [{attribute: {ID: 0x00C9, type: 0x39},
+            minimumReportInterval: 0, maximumReportInterval: 600, reportableChange: 0}];
+			await endpoint.configureReporting('pm25Measurement', payload3);
+        },
+        exposes: [exposes.numeric('pm25', ea.STATE).withUnit('μg/m³').withDescription('PM2.5'),
+		    exposes.numeric('pm1', ea.STATE).withUnit('μg/m³').withDescription('PM1.0'),
+			exposes.numeric('pm10', ea.STATE).withUnit('μg/m³').withDescription('PM10'),
+		    exposes.numeric('reading_interval', ea.STATE_SET).withUnit('Seconds').withDescription('Setting the sensor reading interval Setting the time in seconnds, by default 30 seconds')
+                .withValueMin(15).withValueMax(300),
+			exposes.binary('enable_gas', ea.STATE_SET, 'ON', 'OFF').withDescription('Enable CO2 Gas Control'),
+			exposes.binary('invert_logic_gas', ea.STATE_SET, 'ON', 'OFF').withDescription('Enable invert logic CO2 Gas Control'),
+            exposes.numeric('high_gas', ea.STATE_SET).withUnit('ppm').withDescription('Setting High CO2 Gas Border')
+                .withValueMin(0).withValueMax(1000),
+            exposes.numeric('low_gas', ea.STATE_SET).withUnit('ppm').withDescription('Setting Low CO2 Gas Border')
+                .withValueMin(0).withValueMax(1000)],
+};
+
+module.exports = definition;
