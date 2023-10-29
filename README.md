@@ -23,6 +23,10 @@ To connect the zigbee adapter board to the main board, use the following connect
 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/005.png) 
 
+Для подключения датчика к сети необходимо включить координатор в режим приема новых устройств. После этого необходимо подать питание на датчик VINDRIKTNING.
+
+To join the sensor to the network, it is necessary to turn on the coordinator in the mode of reception of new devices. After this, it is necessary to supply power to the sensor VINDRIKTNING.
+
 
 
 
