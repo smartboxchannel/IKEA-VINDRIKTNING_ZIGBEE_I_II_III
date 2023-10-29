@@ -21,6 +21,8 @@ To flash the board, you need to connect it to the SmartRF04EB and flash it throu
 
 To connect the zigbee adapter board to the main board, use the following connection diagram.
 
+![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/005.png) 
+
 
 
 
