@@ -33,7 +33,7 @@ const tzLocal = {
         },
     },
 	pm_gasstat_config: {
-        key: ['high_gas', 'low_gas', 'enable_gas', 'invert_logic_gas'],
+        key: ['high_pm25', 'low_pm25', 'enable_pm25', 'invert_logic_pm25'],
         convertSet: async (entity, key, rawValue, meta) => {
 			const endpoint = meta.device.getEndpoint(1);
             const lookup = {'OFF': 0x00, 'ON': 0x01};
