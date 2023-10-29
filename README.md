@@ -45,6 +45,7 @@ To remove the sensor from the zigbee network, it is necessary to disconnect the 
 In addition to the main functionality, the sensor has additional functionality. Added binding support for the OnOff cluster. The sensor can be attached to any relay, socket or other executive device, and the sensor will control this relay directly according to the settings set by the user, without the participation of the zigbee coordinator and without scenarios in your home.
 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/010.png) 
+![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/011.png) 
 
 
 
