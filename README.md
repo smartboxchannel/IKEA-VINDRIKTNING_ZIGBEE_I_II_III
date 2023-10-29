@@ -65,6 +65,8 @@ To configure reports based on your preferences, it is necessary to reconfigure t
 
 In ZHA, the sensor works as a simple device, without additional features. I hope someone can help me with this (ZHA quirks)
 
+![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/006.png) 
+
 
 ### Clusters
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/014.png) 
