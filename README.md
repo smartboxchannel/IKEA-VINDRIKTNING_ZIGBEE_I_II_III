@@ -47,6 +47,10 @@ In addition to the main functionality, the sensor has additional functionality. 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/010.png) 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/011.png) 
 
+Есть возможность настроить интервал считывания датчика PM1006 через сеть Wi-Fi, значение по умолчанию — 15 секунд.
+
+It is possible to configure the interval reading of the PM1006 sensor via a Wi-Fi network, the default value is 15 seconds.
+
 
 
 
