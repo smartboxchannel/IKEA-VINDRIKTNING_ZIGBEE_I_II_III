@@ -23,6 +23,10 @@ To connect the zigbee adapter board to the main board, use the following connect
 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/005.png) 
 
+Для работы устройства в zigbee2mqtt необходимо установить внешний конвертер.
+
+For the device to work in zigbee2mqtt, it is necessary to install an external converter.
+
 ### JOIN
 Для подключения датчика к сети необходимо включить координатор в режим приема новых устройств. После этого необходимо подать питание на датчик VINDRIKTNING.
 
@@ -33,6 +37,12 @@ To join the sensor to the network, it is necessary to turn on the coordinator in
 Для отключения датчика от сети zigbee необходимо 4 раза отключить датчик от питания, с интервалом между отключениями не более 8 секунд.
 
 To remove the sensor from the zigbee network, it is necessary to disconnect the sensor from the power supply 4 times, with an interval between disconnections of no more than 8 seconds.
+
+
+### Functionality
+In addition to the main functionality, the sensor has additional functionality. Added binding support for the OnOff cluster. The sensor can be attached to any relay, socket or other executive device, and the sensor will control this relay directly according to the settings set by the user, without the participation of the zigbee coordinator and without scenarios in your home.
+
+Помимо основного функционала, датчик имеет дополнительный функционал. Добавлена ​​поддержка привязки для кластера OnOff. Датчик можно подключить к любому реле, розетке или другому исполнительному устройству, и датчик будет управлять этим реле напрямую по заданным пользователем настройкам, без участия зигби-координатора и без сценариев в вашем доме.
 
 
 
