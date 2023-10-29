@@ -40,9 +40,10 @@ To remove the sensor from the zigbee network, it is necessary to disconnect the 
 
 
 ### Functionality
+Помимо основного функционала, датчик имеет дополнительный функционал. Добавлена ​​поддержка привязки для кластера OnOff. Датчик можно подключить к любому реле, розетке или другому исполнительному устройству, и датчик будет управлять этим реле напрямую по заданным пользователем настройкам, без участия зигби-координатора и без сценариев в вашем доме.
+
 In addition to the main functionality, the sensor has additional functionality. Added binding support for the OnOff cluster. The sensor can be attached to any relay, socket or other executive device, and the sensor will control this relay directly according to the settings set by the user, without the participation of the zigbee coordinator and without scenarios in your home.
 
-Помимо основного функционала, датчик имеет дополнительный функционал. Добавлена ​​поддержка привязки для кластера OnOff. Датчик можно подключить к любому реле, розетке или другому исполнительному устройству, и датчик будет управлять этим реле напрямую по заданным пользователем настройкам, без участия зигби-координатора и без сценариев в вашем доме.
 
 
 
