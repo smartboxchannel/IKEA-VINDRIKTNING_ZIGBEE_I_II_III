@@ -61,6 +61,10 @@ To configure reports based on your preferences, it is necessary to reconfigure t
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/013.png) 
 
 
+### Clusters
+![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/014.png) 
+
+
 
 
 
