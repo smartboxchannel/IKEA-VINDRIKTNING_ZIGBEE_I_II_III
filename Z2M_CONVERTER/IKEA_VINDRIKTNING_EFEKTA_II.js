@@ -92,6 +92,20 @@ const fzLocal = {
 			}
         },
     },
+	air_quality: {
+        cluster: 'genAnalogInput',
+        type: ['attributeReport', 'readResponse'],
+        convert: (model, msg, publish, options, meta) => {
+			const result = {};
+            if (msg.data.hasOwnProperty(0x0065)) {
+                result.voc_raw_data = parseFloat(msg.data[0x0065]);
+            }
+			if (msg.data.hasOwnProperty('presentValue')) {
+			    result.voc_index = msg.data.presentValue;
+			}
+			return result;
+        },
+    },
     pm_gasstat_config: {
         cluster: 'pm25Measurement',
         type: ['attributeReport', 'readResponse'],
@@ -115,15 +129,15 @@ const fzLocal = {
 };
 
 const definition = {
-        zigbeeModel: ['IKEA_VINDRIKTNING_EFEKTA'],
-        model: 'IKEA_VINDRIKTNING_EFEKTA',
+        zigbeeModel: ['IKEA_VINDRIKTNING_EFEKTA II'],
+        model: 'IKEA_VINDRIKTNING_EFEKTA II',
         vendor: 'IKEA',
-        description: '[IKEA_VINDRIKTNING - PM2.5, PM10, PM1 sensor with extended functionality (control of air cleaning)](http://efektalab.com/IKEA_VINDRIKTNING )',
-        fromZigbee: [fzLocal.pm25, fzLocal.pm1, fzLocal.pm10, fzLocal.pm_gasstat_config, fzLocal.node_config],
+        description: '[IKEA_VINDRIKTNING II - PM2.5, PM10, PM1 & VOC Index sensor with extended functionality (control of air cleaning)](http://efektalab.com/IKEA_VINDRIKTNING )',
+        fromZigbee: [fzLocal.pm25, fzLocal.pm1, fzLocal.pm10, fzLocal.pm_gasstat_config, fzLocal.node_config, fzLocal.air_quality],
         toZigbee: [tz.factory_reset,  tzLocal.pm_gasstat_config, tzLocal.node_config],
         configure: async (device, coordinatorEndpoint, logger) => {
             const endpoint = device.getEndpoint(1);
-            const clusters = ['pm25Measurement'];
+            const clusters = ['pm25Measurement', 'genAnalogInput'];
 			await reporting.bind(endpoint, coordinatorEndpoint, clusters);
 			const payload1 = [{attribute: {ID: 0x0000, type: 0x39},
             minimumReportInterval: 0, maximumReportInterval: 600, reportableChange: 0}];
@@ -134,10 +148,18 @@ const definition = {
 			const payload3 = [{attribute: {ID: 0x00C9, type: 0x39},
             minimumReportInterval: 0, maximumReportInterval: 600, reportableChange: 0}];
 			await endpoint.configureReporting('pm25Measurement', payload3);
+			const payload4 = [{attribute: {ID: 0x0055, type: 0x39},
+            minimumReportInterval: 0, maximumReportInterval: 600, reportableChange: 0}];
+			await endpoint.configureReporting('genAnalogInput', payload4);
+			const payload5 = [{attribute: {ID: 0x0065, type: 0x39},
+            minimumReportInterval: 0, maximumReportInterval: 600, reportableChange: 0}];
+			await endpoint.configureReporting('genAnalogInput', payload5);
         },
         exposes: [exposes.numeric('pm25', ea.STATE).withUnit('μg/m³').withDescription('PM2.5'),
 		    exposes.numeric('pm1', ea.STATE).withUnit('μg/m³').withDescription('PM1.0'),
 			exposes.numeric('pm10', ea.STATE).withUnit('μg/m³').withDescription('PM10'),
+			exposes.numeric('voc_index', ea.STATE).withUnit('voc index points').withDescription('VOC INDEX'),
+            exposes.numeric('voc_raw_data', ea.STATE).withUnit('ticks').withDescription('SRAW_VOC, digital raw value'),
 		    exposes.numeric('reading_interval', ea.STATE_SET).withUnit('Seconds').withDescription('Setting the sensor reading interval Setting the time in seconnds, by default 30 seconds')
                 .withValueMin(15).withValueMax(300),
 			exposes.binary('enable_pm25', ea.STATE_SET, 'ON', 'OFF').withDescription('Enable PM2.5 Control'),
