@@ -6,9 +6,10 @@
 
 Во второй версии в проект добавлен датчик VOC SGP40.
 
-In the second version, the SGP40 VOC sensor was added to the project.
 
 IKEA VINDRIKTNING sensor refinement project. With the help of an additional board with a radio module on the cc2530 chip, we get the opportunity to send data from the PM1006 sensor to the zigbee network.
+
+In the second version, the SGP40 VOC sensor was added to the project.
 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/009.png) 
 
