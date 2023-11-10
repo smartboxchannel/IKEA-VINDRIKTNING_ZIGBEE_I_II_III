@@ -17,6 +17,8 @@ In the second version, the SGP40 VOC sensor was added to the project.
 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/001.png) 
 
+![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/015.png) 
+
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/SCHEMATIC/IKEA-VINDRIKTNING_ZIGBEE.png) 
 
 
