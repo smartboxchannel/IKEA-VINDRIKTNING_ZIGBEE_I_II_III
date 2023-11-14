@@ -23,6 +23,8 @@ In the third version, the SCD40 CO2 sensor was added to the project
 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/015.png) 
 
+![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/025.png) 
+
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/SCHEMATIC/IKEA-VINDRIKTNING_ZIGBEE.png) 
 
 
