@@ -13,7 +13,7 @@ IKEA VINDRIKTNING sensor refinement project. With the help of an additional boar
 
 In the second version, the SGP40 VOC sensor was added to the project.
 
-In the third version, the SCD40 CO2, еуьзукфегку and humidity sensor was added to the project
+In the third version, the SCD40 CO2, temoerature and humidity sensor was added to the project
 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/009.png) 
 
