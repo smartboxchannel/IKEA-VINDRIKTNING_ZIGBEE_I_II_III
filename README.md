@@ -42,6 +42,8 @@ To connect the zigbee adapter board to the main board, use the following connect
 
 ![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/005_1.png) 
 
+![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/005_2.png) 
+
 Для работы устройства в zigbee2mqtt необходимо установить соответствующий версии датчика внешний конвертер.
 
 To operate the device in zigbee2mqtt, you must install an external converter corresponding to the sensor version.
