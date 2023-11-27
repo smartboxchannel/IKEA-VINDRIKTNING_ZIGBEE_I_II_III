@@ -1,0 +1,204 @@
+{
+  "name": "IKEA VINDRIKTNING Air quality sensor",
+  "manufacturer": "EfektaLab",
+  "model": "IKEA_VINDRIKTNING_EFEKTA III",
+  "manufacturerId": "EfektaLab for you",
+  "modelId": "IKEA_VINDRIKTNING_EFEKTA III",
+  "init": [
+    {
+      "optional": true,
+      "link": {
+        "endpoint": 1,
+        "cluster": "042A_PM25"
+      },
+      "bind": true,
+	  "report": {
+        "min": 0,
+        "max": 3600,
+        "change": 0
+	  }
+    },
+	{
+      "optional": true,
+      "link": {
+        "endpoint": 1,
+        "cluster": "040D_CarbonDioxide",
+        "attribute": "0000_MeasuredValue"
+      },
+      "bind": true,
+      "report": {
+        "min": 0,
+        "max": 3600,
+        "change": 0
+      }
+    },
+    {
+      "optional": true,
+      "link": {
+        "endpoint": 2,
+        "cluster": "0402_TemperatureMeasurement",
+        "attribute": "0000_MeasuredValue"
+      },
+      "bind": true,
+      "report": {
+        "min": 0,
+        "max": 3600,
+        "change": 0
+      }
+    },
+    {
+      "optional": true,
+      "link": {
+        "endpoint": 2,
+        "cluster": "0405_RelativeHumidityMeasurement",
+        "attribute": "0000_MeasuredValue"
+      },
+      "bind": true,
+      "report": {
+        "min": 0,
+        "max": 3600,
+        "change": 0
+      }
+    }
+  ],
+  "services": [
+   {
+      "type": "AirQualitySensor",
+      "logics": [
+        {
+          "type": "AirQualityFromPM2_5Density"
+        }
+      ],
+      "characteristics": [
+        {
+          "type": "PM2_5Density",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "042A_PM25",
+              "attribute": "0000_MeasuredValue",
+			  "attribute": "00C8_MeasuredValue",
+			  "attribute": "00C9_MeasuredValue"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "CarbonDioxideSensor",
+      "optional": true,
+      "logics": [
+        {
+          "type": "CarbonDioxideDetectedFromCarbonDioxideLevel"
+        }
+      ],
+      "characteristics": [
+        {
+          "type": "CarbonDioxideLevel",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "040D_CarbonDioxide",
+              "attribute": "0000_MeasuredValue"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TemperatureSensor",
+      "optional": true,
+      "characteristics": [
+        {
+          "type": "CurrentTemperature",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "0402_TemperatureMeasurement",
+              "attribute": "0000_MeasuredValue"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "HumiditySensor",
+      "optional": true,
+      "characteristics": [
+        {
+          "type": "CurrentRelativeHumidity",
+          "link": {
+            "endpoint": 1,
+            "cluster": "0405_RelativeHumidityMeasurement",
+            "attribute": "0000_MeasuredValue"
+          }
+        }
+      ]
+    }
+  ],  
+  "options": [
+    {
+      "link": {
+        "endpoint": 1,
+        "cluster": "042A_PM25",
+        "attribute": "0201_reading_interval"
+      },
+      "name": "Частота опроса сенсора твердых частиц на датчике",
+      "type": "Integer",
+      "init": false,
+      "value": 15,
+      "minValue": 1,
+      "maxValue": 360
+    },
+	{
+      "link": {
+        "endpoint": 1,
+        "cluster": "042A_PM25",
+        "attribute": "0220_Enable"
+		},
+      "name": "Контроль качества воздуха",
+      "type": "Boolean",
+      "init": false,
+      "value": false
+    },
+	{
+      "link": {
+        "endpoint": 1,
+        "cluster": "042A_PM25",
+        "attribute": "0225_Invert"
+		},
+      "name": "Контроль качества воздуха, Инвертирование",
+      "type": "Boolean",
+      "init": false,
+      "value": false
+    },
+	{
+      "link": {
+        "endpoint": 1,
+        "cluster": "042A_PM25",
+        "attribute": "0221_HighBorder"
+		},
+      "name": "Контроль качества воздуха, верхняя граница PM",
+      "type": "Integer",
+      "init": false,
+      "value": 1,
+      "minValue": 0,
+      "maxValue": 1000,
+      "minStep": 1
+	},
+	{
+      "link": {
+        "endpoint": 1,
+        "cluster": "042A_PM25",
+        "attribute": "0222_LowBorder"
+		},
+      "name": "Контроль качества воздуха, нижняя граница P",
+      "type": "Integer",
+      "init": false,
+      "value": 1,
+      "minValue": 0,
+      "maxValue": 1000,
+      "minStep": 1
+	}
+  ]
+}
