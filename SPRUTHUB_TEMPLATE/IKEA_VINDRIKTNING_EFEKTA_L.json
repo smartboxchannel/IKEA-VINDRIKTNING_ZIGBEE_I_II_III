@@ -1,0 +1,129 @@
+{
+  "manufacturer": "EfektaLab",
+  "model": "IKEA_VINDRIKTNING_EFEKTA",
+  "manufacturerId": "EfektaLab",
+  "modelId": "IKEA_VINDRIKTNING_EFEKTA",
+  "name": "Датчик твердых частиц IKEA",
+  "init": [
+    {
+      "optional": true,
+      "link": {
+        "endpoint": 1,
+        "cluster": "042A_PM25"
+      },
+      "bind": true,
+	  "report": {
+        "min": 0,
+        "max": 3600,
+        "change": 0
+	  }
+    }
+  ],
+  "services": [
+   {
+      "type": "AirQualitySensor",
+      "logics": [
+        {
+          "type": "AirQualityFromPM2_5Density"
+        }
+      ],
+      "characteristics": [
+        {
+          "type": "PM2_5Density",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "042A_PM25",
+              "attribute": "0000_MeasuredValue"
+            }
+          ]
+        },
+		{
+          "type": "C_PM1_0Density",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "042A_PM25",
+			  "attribute": "00C8_MeasuredValue"
+            }
+          ]
+        },
+		{
+          "type": "PM10Density",
+          "link": [
+            {
+              "endpoint": 1,
+              "cluster": "042A_PM25",
+			  "attribute": "00C9_MeasuredValue"
+            }
+          ]
+        }
+      ]
+    }
+  ],  
+  "options": [
+    {
+      "link": {
+        "endpoint": 1,
+        "cluster": "042A_PM25",
+        "attribute": "0201_reading_interval"
+      },
+      "name": "Частота опроса сенсора твердых частиц на датчике",
+      "type": "Integer",
+      "init": false,
+      "value": 15,
+      "minValue": 1,
+      "maxValue": 360
+    },
+	{
+      "link": {
+        "endpoint": 1,
+        "cluster": "042A_PM25",
+        "attribute": "0220_Enable"
+		},
+      "name": "Контроль качества воздуха",
+      "type": "Boolean",
+      "init": false,
+      "value": false
+    },
+	{
+      "link": {
+        "endpoint": 1,
+        "cluster": "042A_PM25",
+        "attribute": "0225_Invert"
+		},
+      "name": "Контроль качества воздуха, Инвертирование",
+      "type": "Boolean",
+      "init": false,
+      "value": false
+    },
+	{
+      "link": {
+        "endpoint": 1,
+        "cluster": "042A_PM25",
+        "attribute": "0221_HighBorder"
+		},
+      "name": "Контроль качества воздуха, верхняя граница PM",
+      "type": "Integer",
+      "init": false,
+      "value": 1,
+      "minValue": 0,
+      "maxValue": 1000,
+      "minStep": 1
+	},
+	{
+      "link": {
+        "endpoint": 1,
+        "cluster": "042A_PM25",
+        "attribute": "0222_LowBorder"
+		},
+      "name": "Контроль качества воздуха, нижняя граница P",
+      "type": "Integer",
+      "init": false,
+      "value": 1,
+      "minValue": 0,
+      "maxValue": 1000,
+      "minStep": 1
+	}
+  ]
+}
