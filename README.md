@@ -59,9 +59,9 @@ To join the sensor to the network, it is necessary to turn on the coordinator in
 
 
 ### LEAVE
-Для отключения датчика от сети zigbee необходимо 4 раза отключить датчик от питания, с интервалом между отключениями не более 8 секунд.
+Для отключения датчика от сети zigbee необходимо 3 раза подать питание на датчик, с интервалом между отключениями не более 8 секунд. На третий раз через 8 секунд датчик сделает выход из сети. (для третьей версии интервалы более длинные, 14 секунд)
 
-To remove the sensor from the zigbee network, it is necessary to disconnect the sensor from the power supply 4 times, with an interval between disconnections of no more than 8 seconds.
+To disconnect the sensor from the zigbee network, you need to apply power to the sensor 3 times, with an interval between disconnections of no more than 8 seconds. The third time, after 8 seconds, the sensor will exit the network. (for the third version the intervals are longer, 14 seconds)
 
 
 ### Functionality
