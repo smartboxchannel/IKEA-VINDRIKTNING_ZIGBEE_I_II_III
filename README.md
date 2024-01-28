@@ -1,5 +1,7 @@
 # IKEA-VINDRIKTNING_ZIGBEE I, II, III
 
+Поблагодарить автора: https://www.donationalerts.com/r/efektalab
+
 Телеграм чат DIY Devices - https://t.me/diy_devices
 
 Продажа DIY Устройств - https://t.me/diydevmart
