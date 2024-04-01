@@ -11,7 +11,6 @@ const fz = require('zigbee-herdsman-converters/converters/fromZigbee');
 const tz = require('zigbee-herdsman-converters/converters/toZigbee');
 const exposes = require('zigbee-herdsman-converters/lib/exposes');
 const reporting = require('zigbee-herdsman-converters/lib/reporting');
-const extend = require('zigbee-herdsman-converters/lib/extend');
 const constants = require('zigbee-herdsman-converters/lib/constants');
 const {calibrateAndPrecisionRoundOptions} = require('zigbee-herdsman-converters/lib/utils');
 const e = exposes.presets;
