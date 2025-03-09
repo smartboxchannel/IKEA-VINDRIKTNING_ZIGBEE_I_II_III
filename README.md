@@ -61,6 +61,8 @@ To operate the device in zigbee2mqtt, you must install an external converter cor
 
 To join the sensor to the network, it is necessary to turn on the coordinator in the mode of reception of new devices. After this, it is necessary to supply power to the sensor VINDRIKTNING.
 
+![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/g02_for_join.gif) 
+
 
 ### LEAVE
 Для отключения датчика от сети zigbee необходимо 3 раза подать питание на датчик, с интервалом между отключениями не более 8 секунд. На третий раз через 8 секунд датчик сделает выход из сети. (для третьей версии интервалы более длинные, 14 секунд)
