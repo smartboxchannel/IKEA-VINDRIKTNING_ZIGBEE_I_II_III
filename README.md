@@ -69,6 +69,8 @@ To join the sensor to the network, it is necessary to turn on the coordinator in
 
 To disconnect the sensor from the zigbee network, you need to apply power to the sensor 3 times, with an interval between disconnections of no more than 8 seconds. The third time, after 8 seconds, the sensor will exit the network. (for the third version the intervals are longer, 14 seconds)
 
+![IKEA VINDRIKTNING](https://raw.githubusercontent.com/smartboxchannel/IKEA-VINDRIKTNING_ZIGBEE/main/IMAGES/g02_for_leave.gif) 
+
 
 ### Functionality
 Помимо основного функционала, датчик имеет дополнительный функционал. Добавлена ​​поддержка привязки для кластера OnOff. Датчик можно подключить к любому реле, розетке или другому исполнительному устройству, и датчик будет управлять этим реле напрямую по заданным пользователем настройкам, без участия зигби-координатора и без сценариев в вашем доме.
