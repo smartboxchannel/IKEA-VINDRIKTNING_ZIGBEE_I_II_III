@@ -1,8 +1,8 @@
 # IKEA-VINDRIKTNING_ZIGBEE I, II, III
 
-Поблагодарить автора: https://www.donationalerts.com/r/efektalab
+Поблагодарить автора: https://yoomoney.ru/fundraise/P2XLTgJsB6k.231012
 
-Thank the author: http://www.donationalerts.ru/r/EfektaLab
+Thank the author: https://yoomoney.ru/fundraise/P2XLTgJsB6k.231012
 
 Телеграм чат DIY Devices - https://t.me/diy_devices
 
